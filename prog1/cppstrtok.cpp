@@ -86,7 +86,6 @@ if(strcmp(argv[1], "-l") == 0){
 
 int main (int argc, char** argv) {
    set_execname (argv[0]);
-   
    for (int argi = 1; argi < argc; ++argi) {
       char* filename = argv[argi];
       string command = CPP + " " + filename;
@@ -100,12 +99,14 @@ int main (int argc, char** argv) {
          eprint_status (command.c_str(), pclose_rc);
          if (pclose_rc != 0) set_exitstatus (EXIT_FAILURE);
       }
+      /*
       string test = str(filename);
 
       ofstream file;
       file.open (test + ".str"); //assign to file name
       dump_stringset(file);
       file.close();
+      */
    }
 
 //scan options
@@ -121,8 +122,20 @@ if(taskl == 'l'){
    cout << "yy_flex_debug = 0 yydebug = 0" << endl;
 }
 
-//Create .str file here
 
+//Create .str file here
+      ofstream file;
+      char* filename = argv[1];
+      for(int i=2; i < argc; i++){
+         strcat(filename, argv[i]);
+      }
+
+      chomp(filename, 'c');
+      chomp(filename, 'o');
+      strcat(filename, "str");
+      file.open (filename); //assign to file name
+      dump_stringset(file);
+      file.close();
    //print hashtable
    //dump_stringset(cout);
 
