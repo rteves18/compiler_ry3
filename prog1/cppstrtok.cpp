@@ -24,8 +24,9 @@ using namespace std;
 
 //static char taskl; //commandline option select
 //static char tasky;
-
-
+int yy_flex_debug = 0;
+int yydebug = 0;
+char* cvalue = NULL;
 
 const string CPP = "/usr/bin/cpp";
 constexpr size_t LINESIZE = 1024;
@@ -93,10 +94,9 @@ if(strcmp(argv[1], "-l") == 0){
    }
 */
 
-int scan_opts (int argc, char **argv) {
-int yy_flex_debug = 0;
-int yydebug = 0;
-char *cvalue = NULL;
+void scan_opts (int argc, char **argv) {
+
+
 int index;
 int c;
   opterr = 0;
@@ -112,26 +112,26 @@ int c;
       case 'c':
         cvalue = optarg;
         break;
-      case '?':
-        if (optopt == 'c')
+      //case '?':
+        //if (optopt == 'c')
           //fprintf (stderr, "Option -%c requires an argument.\n", optopt);
-        else if (isprint (optopt))
+        //else if (isprint (optopt))
           //fprintf (stderr, "Unknown option `-%c'.\n", optopt);
-        else
+        //else
           //fprintf (stderr,
-                   "Unknown option character `\\x%x'.\n",
-                   optopt);
-        return 1;
+                   //"Unknown option character `\\x%x'.\n",
+                   //optopt);
+        //return 1;
       default:
         abort ();
       }
   //printf ("yy_flex_debug = %d, yydebug = %d, cvalue = %s\n",
           //yy_flex_debug, yydebug, cvalue);
 
-  for (index = optind; index < argc; index++)
+  //for (index = optind; index < argc; index++)
     //printf ("Non-option argument %s\n", argv[index]);
-  return 0;
-}
+  //return 0;
+   }
 
 
 int main (int argc, char** argv) {
