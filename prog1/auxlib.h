@@ -1,4 +1,6 @@
 // $Id: auxlib.h,v 1.2 2015-10-01 18:15:04-07 - - $
+//Partner Name: Ryan Teves Username: rteves
+//Partner Name: Matthew Kim Username: madkim
 
 #ifndef __AUXLIB_H__
 #define __AUXLIB_H__

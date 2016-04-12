@@ -1,4 +1,6 @@
 // $Id: auxlib.cpp,v 1.3 2015-10-01 18:15:04-07 - - $
+//Partner Name: Ryan Teves Username: rteves
+//Partner Name: Matthew Kim Username: madkim
 
 #include <assert.h>
 #include <errno.h>
