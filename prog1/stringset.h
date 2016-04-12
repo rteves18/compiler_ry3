@@ -1,4 +1,6 @@
 // $Id: stringset.h,v 1.4 2014-10-09 15:42:13-07 - - $
+//Partner Name: Ryan Teves Username: rteves
+//Partner Name: Matthew Kim Username: madkim
 
 #ifndef __STRINGSET__
 #define __STRINGSET__

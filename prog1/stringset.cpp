@@ -1,4 +1,6 @@
 // $Id: stringset.cpp,v 1.12 2016-03-24 14:33:24-07 - - $
+//Partner Name: Ryan Teves Username: rteves
+//Partner Name: Matthew Kim Username: madkim
 
 #include <iomanip>
 #include <unordered_set>
