@@ -3,6 +3,8 @@
 // Use cpp to scan a file and print line numbers.
 // Print out each input line read in, then strtok it for
 // tokens.
+//Partner Name: Ryan Teves Username: rteves
+//Partner Name: Matthew Kim Username: madkim
 
 #include <string>
 #include <iostream>
@@ -26,7 +28,9 @@ using namespace std;
 //static char tasky;
 int yy_flex_debug = 0;
 int yydebug = 0;
-char* cvalue = NULL;
+char* auxlib_value = NULL;
+char* D_string = NULL;
+int D_value = 0;
 
 const string CPP = "/usr/bin/cpp";
 constexpr size_t LINESIZE = 1024;
@@ -55,7 +59,7 @@ void cpplines (FILE* pipe, char* filename) {
       int sscanf_rc = sscanf (buffer, "# %d \"%[^\"]\"",
                               &linenr, filename);
       if (sscanf_rc == 2) {
-         //printf ("DIRECTIVE: line %d file \"%s\"\n", linenr, filename);
+         
          continue;
       }
       char* savepos = NULL;
@@ -72,35 +76,10 @@ void cpplines (FILE* pipe, char* filename) {
    }
 }
 
-//scan options **old**
-/* 
-void scan_opts (char** argv) {
-
-if(strcmp(argv[1], "-l") == 0){
-      taskl = 'l';
-         cout << "***-l selected***" << endl;
-      } else if(strcmp(argv[1], "-y") == 0){
-      tasky = 'y';
-         cout << "***-y selected***" << endl;
-      } else if(strcmp(argv[1], "-ly") == 0){
-      taskl = 'l';
-      tasky = 'y';
-      cout << "***-ly selected***" << endl;
-      } else {
-         cout << "***Invalid Entry***" << endl;
-         return;
-      }
-
-   }
-*/
-
 void scan_opts (int argc, char **argv) {
-
-
-int index;
 int c;
   opterr = 0;
-  while ((c = getopt (argc, argv, "lyc:")) != -1)
+  while ((c = getopt (argc, argv, "ly@D:")) != -1)
     switch (c)
       {
       case 'l':
@@ -109,28 +88,16 @@ int c;
       case 'y':
         yydebug = 1;
         break;
-      case 'c':
-        cvalue = optarg;
-        break;
-      //case '?':
-        //if (optopt == 'c')
-          //fprintf (stderr, "Option -%c requires an argument.\n", optopt);
-        //else if (isprint (optopt))
-          //fprintf (stderr, "Unknown option `-%c'.\n", optopt);
-        //else
-          //fprintf (stderr,
-                   //"Unknown option character `\\x%x'.\n",
-                   //optopt);
-        //return 1;
+      case 'D':
+         D_string = optarg;
+         D_value = 1;
+         break;         
+      case '@':
+         auxlib_value = optarg;
+         break;
       default:
         abort ();
       }
-  //printf ("yy_flex_debug = %d, yydebug = %d, cvalue = %s\n",
-          //yy_flex_debug, yydebug, cvalue);
-
-  //for (index = optind; index < argc; index++)
-    //printf ("Non-option argument %s\n", argv[index]);
-  //return 0;
    }
 
 
@@ -149,14 +116,7 @@ int main (int argc, char** argv) {
          eprint_status (command.c_str(), pclose_rc);
          if (pclose_rc != 0) set_exitstatus (EXIT_FAILURE);
       }
-      /*
-      string test = str(filename);
 
-      ofstream file;
-      file.open (test + ".str"); //assign to file name
-      dump_stringset(file);
-      file.close();
-      */
    string filein = filename;
       int last = filein.find_last_of(".");
       string filename_ns = filein.substr(0, last);
@@ -171,79 +131,9 @@ int main (int argc, char** argv) {
 
 scan_opts(argc,argv);
 
-//scan options **old**
-   /*
-scan_opts (argv);
-
-if(taskl == 'l'){
-   cout << "yy_flex_debug = 1 yydebug = 0" << endl;
-} else if(tasky == 'y'){
-   cout << "yy_flex_debug = 0 yydebug = 1" << endl;
-} else if(taskl == 'l' || tasky == 'y'){
-   cout << "yy_flex_debug = 1 yydebug = 1" << endl;
-} else {
-   cout << "yy_flex_debug = 0 yydebug = 0" << endl;
+if(auxlib_value != NULL){
+   set_debugflags(auxlib_value);
 }
-*/
-
-
-//other .ctr file
-/*
-char* filename = argv[1];
-      for(int i=2; i < argc; i++){
-         strcat(filename, argv[i]);
-      }
-*/
-// Vanessa's str
-      /*
-      string file_string = filename;
-      int end = file_string.find_last_of(".");
-      string file_rawname = file_string.substr(0, end);
-      file_rawname += ".str";
-      string file_out = file_rawname;
-      std::ofstream out (file_out, std::ofstream::out);
-   // dump
-      dump_stringset(out);
-      */
-//New str
-      /*
-      string filein = filename;
-      int last = filein.find_last_of(".");
-      string filename_ns = filein.substr(0, last);
-      filename_ns += ".str";
-      string newfile_out = filename_ns;
-      
-      ofstream newfile; 
-      newfile.open(newfile_out);
-      dump_stringset(newfile);
-      newfile.close();
-      */
-//old str
-      /*
-      ofstream file;
-      char* filename = argv[1];
-      for(int i=2; i < argc; i++){
-         strcat(filename, argv[i]);
-      }
-
-      std::string sfilename(filename);
-
-      if(sfilename.find(".oc")) {
-         chomp(filename, 'c');
-         chomp(filename, 'o');
-         strcat(filename, "str");
-         file.open (filename); //assign to file name
-         dump_stringset(file);
-      }
-      else{
-         cout << "Invalid Input" << endl;
-      }
-
-      file.close();
-      */
-
-   //print hashtable
-   //dump_stringset(cout);
 
    return get_exitstatus();
 }
