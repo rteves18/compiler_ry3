@@ -16,11 +16,16 @@ using namespace std;
 #include <string.h>
 #include <wait.h>
 
+#include <ctype.h>
+#include <unistd.h>
+
 #include "auxlib.h"
 #include "stringset.h"
 
-static char taskl; //commandline option select
-static char tasky;
+//static char taskl; //commandline option select
+//static char tasky;
+
+
 
 const string CPP = "/usr/bin/cpp";
 constexpr size_t LINESIZE = 1024;
@@ -66,7 +71,8 @@ void cpplines (FILE* pipe, char* filename) {
    }
 }
 
-//scan options 
+//scan options **old**
+/* 
 void scan_opts (char** argv) {
 
 if(strcmp(argv[1], "-l") == 0){
@@ -79,15 +85,59 @@ if(strcmp(argv[1], "-l") == 0){
       taskl = 'l';
       tasky = 'y';
       cout << "***-ly selected***" << endl;
+      } else {
+         cout << "***Invalid Entry***" << endl;
+         return;
       }
 
    }
+*/
+
+int scan_opts (int argc, char **argv) {
+int yy_flex_debug = 0;
+int yydebug = 0;
+char *cvalue = NULL;
+int index;
+int c;
+  opterr = 0;
+  while ((c = getopt (argc, argv, "lyc:")) != -1)
+    switch (c)
+      {
+      case 'l':
+        yy_flex_debug = 1;
+        break;
+      case 'y':
+        yydebug = 1;
+        break;
+      case 'c':
+        cvalue = optarg;
+        break;
+      case '?':
+        if (optopt == 'c')
+          //fprintf (stderr, "Option -%c requires an argument.\n", optopt);
+        else if (isprint (optopt))
+          //fprintf (stderr, "Unknown option `-%c'.\n", optopt);
+        else
+          //fprintf (stderr,
+                   "Unknown option character `\\x%x'.\n",
+                   optopt);
+        return 1;
+      default:
+        abort ();
+      }
+  //printf ("yy_flex_debug = %d, yydebug = %d, cvalue = %s\n",
+          //yy_flex_debug, yydebug, cvalue);
+
+  for (index = optind; index < argc; index++)
+    //printf ("Non-option argument %s\n", argv[index]);
+  return 0;
+}
 
 
 int main (int argc, char** argv) {
    set_execname (argv[0]);
    for (int argi = 1; argi < argc; ++argi) {
-      char* filename = argv[argi];
+      char* filename = argv[argc - 1];
       string command = CPP + " " + filename;
       //printf ("command=\"%s\"\n", command.c_str());
       FILE* pipe = popen (command.c_str(), "r");
@@ -107,9 +157,22 @@ int main (int argc, char** argv) {
       dump_stringset(file);
       file.close();
       */
+   string filein = filename;
+      int last = filein.find_last_of(".");
+      string filename_ns = filein.substr(0, last);
+      filename_ns += ".str";
+      string newfile_out = filename_ns;
+      
+      ofstream newfile; 
+      newfile.open(newfile_out);
+      dump_stringset(newfile);
+      newfile.close();
    }
 
-//scan options
+scan_opts(argc,argv);
+
+//scan options **old**
+   /*
 scan_opts (argv);
 
 if(taskl == 'l'){
@@ -121,21 +184,64 @@ if(taskl == 'l'){
 } else {
    cout << "yy_flex_debug = 0 yydebug = 0" << endl;
 }
+*/
 
 
-//Create .str file here
+//other .ctr file
+/*
+char* filename = argv[1];
+      for(int i=2; i < argc; i++){
+         strcat(filename, argv[i]);
+      }
+*/
+// Vanessa's str
+      /*
+      string file_string = filename;
+      int end = file_string.find_last_of(".");
+      string file_rawname = file_string.substr(0, end);
+      file_rawname += ".str";
+      string file_out = file_rawname;
+      std::ofstream out (file_out, std::ofstream::out);
+   // dump
+      dump_stringset(out);
+      */
+//New str
+      /*
+      string filein = filename;
+      int last = filein.find_last_of(".");
+      string filename_ns = filein.substr(0, last);
+      filename_ns += ".str";
+      string newfile_out = filename_ns;
+      
+      ofstream newfile; 
+      newfile.open(newfile_out);
+      dump_stringset(newfile);
+      newfile.close();
+      */
+//old str
+      /*
       ofstream file;
       char* filename = argv[1];
       for(int i=2; i < argc; i++){
          strcat(filename, argv[i]);
       }
 
-      chomp(filename, 'c');
-      chomp(filename, 'o');
-      strcat(filename, "str");
-      file.open (filename); //assign to file name
-      dump_stringset(file);
+      std::string sfilename(filename);
+
+      if(sfilename.find(".oc")) {
+         chomp(filename, 'c');
+         chomp(filename, 'o');
+         strcat(filename, "str");
+         file.open (filename); //assign to file name
+         dump_stringset(file);
+      }
+      else{
+         cout << "Invalid Input" << endl;
+      }
+
       file.close();
+      */
+
    //print hashtable
    //dump_stringset(cout);
 
