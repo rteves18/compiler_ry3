@@ -1,3 +1,5 @@
+//Partner Name: Ryan Teves Username: rteves
+//Partner Name: Matthew Kim Username: madkim
 
 #include <vector>
 #include <string>
@@ -72,7 +74,16 @@ int yylval_token (int symbol) {
    int offset = scan_offset - yyleng;
    yylval = new astree (symbol, included_filenames.size() - 1,
                         scan_linenr, offset, yytext);
-   dump_astree(tokfile, yylval);
+   //dump_astree(stdout, yylval);
+
+fprintf (tokfile, "%3zu %3zu.%03zu %4u  %-12s (%s)\n",
+            yylval->filenr, 
+            yylval->linenr, 
+            yylval->offset,
+            yylval->symbol, 
+            get_yytname (yylval->symbol),
+            yylval->lexinfo->c_str());
+
    return symbol;
 }
 
@@ -92,7 +103,7 @@ void lexer_include (void) {
       errprintf ("%: %d: [%s]: invalid directive, ignored\n",
                  scan_rc, yytext);
    }else {
-      printf (";# %d \"%s\"\n", linenr, filename);
+      //printf (";# %d \"%s\"\n", linenr, filename);
       fprintf (tokfile, "# %d \"%s\"\n", linenr, filename);
       lexer_newfilename (filename);
       scan_linenr = linenr - 1;

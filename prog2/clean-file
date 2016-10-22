@@ -94,4 +94,3 @@ misc.lis : ${DEPFILE} foo.oc foo1.oh foo2.oh
 ifeq "${NEEDINCL}" ""
 include ${DEPFILE}
 endif
-

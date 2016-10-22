@@ -1,6 +1,7 @@
 %{
 // Dummy parser for scanner project.
-
+//Partner Name: Ryan Teves Username: rteves
+//Partner Name: Matthew Kim Username: madkim
 #include <cassert>
 
 #include "lyutils.h"

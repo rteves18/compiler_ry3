@@ -7,6 +7,9 @@
 #include "auxlib.h"
 #define YY_USER_ACTION  { lexer_useraction(); }
 
+^X
+more scanner.l
+ls
 %}
 
 %option 8bit

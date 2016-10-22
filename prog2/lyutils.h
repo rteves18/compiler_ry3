@@ -6,6 +6,9 @@
 #include <stdio.h>
 
 #include "astree.h"
+//Partner Name: Ryan Teves Username: rteves
+//Partner Name: Matthew Kim Username: madkim
+
 #include "auxlib.h"
 
 #define YYEOF 0

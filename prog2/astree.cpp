@@ -1,3 +1,5 @@
+//Partner Name: Ryan Teves Username: rteves
+//Partner Name: Matthew Kim Username: madkim
 
 #include <assert.h>
 #include <inttypes.h>
