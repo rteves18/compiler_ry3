@@ -1,0 +1,48 @@
+Partner Name: Ryan Teves Username: rteves
+Partner Name: Matthew Kim Username: madkim
+File Submission:
+auxlib.h
+stringset.h
+astree.h
+lyutils.h
+symstack.h
+symtable.h
+typecheck.h
+emitter.h
+auxlib.cpp
+main.cpp
+stringset.cpp
+astree.cpp
+lyutils.cpp
+symstack.cpp
+symtable.cpp
+typecheck.cpp
+emitter.cpp
+parser.y
+scanner.l
+Makefile
+README
+PARTNER
+
+This program was completed using pair programming.
+Partner: Ryan Teves (rteves@ucsc.edu)
+Partner: Matthew Kim (madkim@ucsc.edu)
+
+We acknowledge that each partner in a programming pair should
+drive roughly 50% of the time the pair is working together, and
+at most 25% of an individual's effort for an assignment should
+be spent working alone. Any work done by a solitary programmer
+must be reviewed by the partner. Any work done by a solitary programmer
+must be reviewed by the partner. The object is to work
+together, learning from each other, not to divide the work into
+two pieces with each partner working on a different piece.
+
+Ryan Teves spent 7 hours working alone.
+Matthew Kim spent 8 hours working alone.
+We spent 21 hours working together.
+Ryan Teves spent  11 hours driving.
+Matthew Kim spent 10 hours driving.
+
+Please grade the work submitted by madkim@ucsc.edu
+and not the work submitted by rteves@ucsc.edu
+

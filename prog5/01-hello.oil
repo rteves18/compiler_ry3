@@ -1,0 +1,7 @@
+void __ocmain (void) {
+        char* s1 = "Hello, world!\n";
+puts __puts;
+
+unknown a1"Hello, world!\n" ( puts __puts;
+ )
+}

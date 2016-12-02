@@ -1,0 +1,30 @@
+
+__assert_fail (8.23.5) {0} void function 
+   expr (8.23.27) {1} variable param lval 
+   file (8.23.40) {1} string variable param lval 
+   line (8.23.50) {1} int variable param lval 
+
+putb (8.24.5) {0} void function 
+   b (8.24.16) {2} variable param lval 
+
+putc (8.25.5) {0} void function 
+   c (8.25.16) {3} variable param lval 
+
+puti (8.26.5) {0} void function 
+   i (8.26.15) {4} variable param lval 
+
+puts (8.27.5) {0} void function 
+   s (8.27.18) {5} variable param lval 
+
+endl (8.28.5) {0} void function 
+
+getc (8.29.4) {0} int function 
+
+getw (8.30.7) {0} string function 
+
+getln (8.31.7) {0} string function 
+
+getargv (8.32.9) {0} array function 
+
+exit (8.33.5) {0} void function 
+   status (8.33.15) {11} variable param lval 

@@ -1,0 +1,14 @@
+auxlib.o: auxlib.cpp auxlib.h
+main.o: main.cpp auxlib.h stringset.h astree.h lyutils.h yyparse.h \
+ typecheck.h symstack.h symtable.h emitter.h
+stringset.o: stringset.cpp stringset.h
+astree.o: astree.cpp astree.h auxlib.h stringset.h lyutils.h yyparse.h
+lyutils.o: lyutils.cpp lyutils.h astree.h auxlib.h yyparse.h
+symstack.o: symstack.cpp symstack.h symtable.h astree.h auxlib.h
+symtable.o: symtable.cpp symtable.h astree.h auxlib.h
+typecheck.o: typecheck.cpp typecheck.h auxlib.h lyutils.h astree.h \
+ yyparse.h symstack.h symtable.h
+emitter.o: emitter.cpp astree.h auxlib.h emitter.h lyutils.h yyparse.h \
+ symtable.h
+yylex.o: yylex.cc lyutils.h astree.h auxlib.h yyparse.h
+yyparse.o: yyparse.cc lyutils.h astree.h auxlib.h yyparse.h

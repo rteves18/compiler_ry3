@@ -1,0 +1,65 @@
+ROOT ""  (0.0.0) {0}            
+| PROTOTYPE ""  (8.23.0) {0}  
+| | VOID "void"  (8.23.0) {0} 
+| | | DECLID "__assert_fail"  (8.23.5) {0} void function 
+| | '(' "("  (8.23.19) {0}   
+| | | PARAMLIST "string"  (8.23.20) {0} 
+| | | | DECLID "expr"  (8.23.27) {1} variable param lval 
+| | | STRING "string"  (8.23.33) {0} string 
+| | | | DECLID "file"  (8.23.40) {1} string variable param lval 
+| | | INT "int"  (8.23.46) {0} int 
+| | | | DECLID "line"  (8.23.50) {1} int variable param lval 
+| PROTOTYPE ""  (8.24.0) {0}  
+| | VOID "void"  (8.24.0) {0} 
+| | | DECLID "putb"  (8.24.5) {0} void function 
+| | '(' "("  (8.24.10) {0} 
+| | | PARAMLIST "bool"  (8.24.11) {0} 
+| | | | DECLID "b"  (8.24.16) {2} variable param lval 
+| PROTOTYPE ""  (8.25.0) {0}  
+| | VOID "void"  (8.25.0) {0} 
+| | | DECLID "putc"  (8.25.5) {0} void function 
+| | '(' "("  (8.25.10) {0} 
+| | | PARAMLIST "char"  (8.25.11) {0} 
+| | | | DECLID "c"  (8.25.16) {3} variable param lval 
+| PROTOTYPE ""  (8.26.0) {0}  
+| | VOID "void"  (8.26.0) {0} 
+| | | DECLID "puti"  (8.26.5) {0} void function 
+| | '(' "("  (8.26.10) {0} 
+| | | PARAMLIST "int"  (8.26.11) {0} 
+| | | | DECLID "i"  (8.26.15) {4} variable param lval 
+| PROTOTYPE ""  (8.27.0) {0}  
+| | VOID "void"  (8.27.0) {0} 
+| | | DECLID "puts"  (8.27.5) {0} void function 
+| | '(' "("  (8.27.10) {0} 
+| | | PARAMLIST "string"  (8.27.11) {0} 
+| | | | DECLID "s"  (8.27.18) {5} variable param lval 
+| PROTOTYPE ""  (8.28.0) {0}  
+| | VOID "void"  (8.28.0) {0} 
+| | | DECLID "endl"  (8.28.5) {0} void function 
+| | PARAMLIST "("  (8.28.10) {0} 
+| PROTOTYPE ""  (8.29.0) {0}  
+| | INT "int"  (8.29.0) {0} int 
+| | | DECLID "getc"  (8.29.4) {0} int function 
+| | PARAMLIST "("  (8.29.9) {0} 
+| PROTOTYPE ""  (8.30.0) {0}  
+| | STRING "string"  (8.30.0) {0} string 
+| | | DECLID "getw"  (8.30.7) {0} string function 
+| | PARAMLIST "("  (8.30.12) {0} 
+| PROTOTYPE ""  (8.31.0) {0}  
+| | STRING "string"  (8.31.0) {0} string 
+| | | DECLID "getln"  (8.31.7) {0} string function 
+| | PARAMLIST "("  (8.31.13) {0} 
+| PROTOTYPE ""  (8.32.6) {0}  
+| | ARRAY "[]"  (8.32.6) {0}  
+| | | DECLID "getargv"  (8.32.9) {0} array function 
+| | | STRING "string"  (8.32.0) {0} 
+| | PARAMLIST "("  (8.32.17) {0} 
+| PROTOTYPE ""  (8.33.0) {0}  
+| | VOID "void"  (8.33.0) {0} 
+| | | DECLID "exit"  (8.33.5) {0} void function 
+| | '(' "("  (8.33.10) {0} 
+| | | PARAMLIST "int"  (8.33.11) {0} 
+| | | | DECLID "status"  (8.33.15) {11} variable param lval 
+| CALL "("  (9.6.5) {0}  
+| | IDENT "puts"  (9.6.0) {0} void function (8.27.0)
+| | STRINGCON ""Hello, world!\n""  (9.6.6) {0} string const 
